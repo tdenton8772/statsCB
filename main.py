@@ -27,9 +27,7 @@ class listener_definition(object):
         
         while True:
             data, addr = self.sock.recvfrom(128*1024)
-            print("Sending")
             self.send_sock.sendto(data, (self.STATSD_HOSTNAME, self.STATSD_PORT))
-            print("Sent")
             json_data = processor(data)
             yield(json_data)
             
